@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --font-sans: "Outfit", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s infinite alternate;
+  --animate-spin-slow: spin 20s linear infinite;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes pulse-glow {
+    0% { filter: drop-shadow(0 0 2px var(--color-primary)); }
+    100% { filter: drop-shadow(0 0 15px var(--color-primary)); }
+  }
+}
+
+/* Base Styles & Theme Variables */
+:root {
+  /* Default: Midnight Aurora — Deep indigo night with aurora borealis accents */
+  --bg-gradient: linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f172a 100%);
+  --color-primary: #38bdf8;        /* Sky-400 */
+  --color-secondary: #a78bfa;      /* Violet-400 */
+  --color-accent: #34d399;         /* Emerald-400 */
+  --card-bg: rgba(15, 23, 42, 0.72);
+  --card-border: rgba(56, 189, 248, 0.12);
+  --text-main: #f1f5f9;
+  --text-muted: #64748b;
+  --glow-shadow: 0 4px 24px rgba(56, 189, 248, 0.15), 0 1px 3px rgba(0,0,0,0.3);
+  --disk-glow: 0 0 14px;
+  --btn-glow: 0 0 18px;
+  --rod-color: #1e293b;
+  --particle-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Theme: Rose Gold — Warm blush tones with champagne metallic highlights */
+[data-theme="rosegold"] {
+  --bg-gradient: linear-gradient(135deg, #1a1118 0%, #2d1f2b 50%, #1f1520 100%);
+  --color-primary: #f472b6;        /* Pink-400 */
+  --color-secondary: #e2a76f;      /* Warm Gold custom */
+  --color-accent: #fb923c;         /* Orange-400 */
+  --card-bg: rgba(45, 31, 43, 0.72);
+  --card-border: rgba(244, 114, 182, 0.14);
+  --text-main: #fdf2f8;
+  --text-muted: #9d7a8c;
+  --glow-shadow: 0 4px 24px rgba(244, 114, 182, 0.15), 0 1px 3px rgba(0,0,0,0.3);
+  --disk-glow: 0 0 14px;
+  --btn-glow: 0 0 18px;
+  --rod-color: #3d2838;
+  --particle-color: rgba(244, 114, 182, 0.3);
+}
+
+/* Theme: Emerald Noir — Rich dark green with gold accent luxury feel */
+[data-theme="emerald"] {
+  --bg-gradient: linear-gradient(135deg, #071210 0%, #0d261f 50%, #0a1f19 100%);
+  --color-primary: #34d399;        /* Emerald-400 */
+  --color-secondary: #fbbf24;      /* Amber-400 */
+  --color-accent: #2dd4bf;         /* Teal-400 */
+  --card-bg: rgba(13, 38, 31, 0.72);
+  --card-border: rgba(52, 211, 153, 0.12);
+  --text-main: #ecfdf5;
+  --text-muted: #6b8f80;
+  --glow-shadow: 0 4px 24px rgba(52, 211, 153, 0.15), 0 1px 3px rgba(0,0,0,0.3);
+  --disk-glow: 0 0 14px;
+  --btn-glow: 0 0 18px;
+  --rod-color: #1a3d30;
+  --particle-color: rgba(52, 211, 153, 0.3);
+}
+
+/* Theme: Arctic Frost — Clean icy light theme with blue crystal tones */
+[data-theme="frost"] {
+  --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+  --color-primary: #0284c7;        /* Sky-600 */
+  --color-secondary: #7c3aed;      /* Violet-600 */
+  --color-accent: #0891b2;         /* Cyan-600 */
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(2, 132, 199, 0.15);
+  --text-main: #0c4a6e;
+  --text-muted: #64748b;
+  --glow-shadow: 0 4px 20px rgba(2, 132, 199, 0.1), 0 1px 3px rgba(0,0,0,0.06);
+  --disk-glow: 0 2px 8px rgba(2, 132, 199, 0.15);
+  --btn-glow: 0 2px 12px rgba(2, 132, 199, 0.15);
+  --rod-color: #94a3b8;
+  --particle-color: rgba(56, 189, 248, 0.2);
+}
+
+/* Theme: Sunset Blaze — Dramatic warm gradient with ember-like vibrancy */
+[data-theme="sunset"] {
+  --bg-gradient: linear-gradient(135deg, #1c0c08 0%, #2a1209 50%, #1f0f0a 100%);
+  --color-primary: #f97316;        /* Orange-500 */
+  --color-secondary: #ef4444;      /* Red-500 */
+  --color-accent: #eab308;         /* Yellow-500 */
+  --card-bg: rgba(42, 18, 9, 0.72);
+  --card-border: rgba(249, 115, 22, 0.14);
+  --text-main: #fff7ed;
+  --text-muted: #a8846a;
+  --glow-shadow: 0 4px 24px rgba(249, 115, 22, 0.18), 0 1px 3px rgba(0,0,0,0.3);
+  --disk-glow: 0 0 14px;
+  --btn-glow: 0 0 18px;
+  --rod-color: #44261a;
+  --particle-color: rgba(249, 115, 22, 0.35);
+}
+
+/* Theme: Royal Amethyst — Deep purple royalty with platinum shimmer */
+[data-theme="amethyst"] {
+  --bg-gradient: linear-gradient(135deg, #0f0a1e 0%, #1a1035 50%, #130d28 100%);
+  --color-primary: #a78bfa;        /* Violet-400 */
+  --color-secondary: #f0abfc;      /* Fuchsia-300 */
+  --color-accent: #818cf8;         /* Indigo-400 */
+  --card-bg: rgba(26, 16, 53, 0.72);
+  --card-border: rgba(167, 139, 250, 0.14);
+  --text-main: #f5f3ff;
+  --text-muted: #8b7bb5;
+  --glow-shadow: 0 4px 24px rgba(167, 139, 250, 0.18), 0 1px 3px rgba(0,0,0,0.3);
+  --disk-glow: 0 0 14px;
+  --btn-glow: 0 0 18px;
+  --rod-color: #2e1f57;
+  --particle-color: rgba(167, 139, 250, 0.35);
+}
+
+/* Light Mode Override (when enabled on non-frost themes) */
+[data-mode="light"]:not([data-theme="frost"]) {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --glow-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0,0,0,0.06);
+  --disk-glow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --btn-glow: 0 2px 10px rgba(0,0,0,0.08);
+  --rod-color: #cbd5e1;
+  --particle-color: rgba(148, 163, 184, 0.12);
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Text Selection */
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Glassmorphism Utilities */
+.glassmorphism {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glow-shadow);
+}
+
+.glassmorphism-light {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Neon Glow Utilities */
+.neon-text-glow {
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.neon-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.neon-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.neon-btn:hover {
+  box-shadow: var(--btn-glow) var(--color-primary), 0 6px 20px rgba(0,0,0,0.25);
+  transform: translateY(-1px);
+}
+.neon-btn:active {
+  transform: translateY(0);
+}
+
+/* Floating Particles Canvas */
+.particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Game Board — Disk */
+.disk {
+  box-sizing: border-box;
+  user-select: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.2s ease, filter 0.3s ease;
+}
+.disk:active {
+  cursor: grabbing !important;
+}
+
+/* Smooth page transitions */
+.page-enter { opacity: 0; transform: translateY(12px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.35s ease; }
+.page-exit { opacity: 1; }
+.page-exit-active { opacity: 0; transition: opacity 0.2s ease; }

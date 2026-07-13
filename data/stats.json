@@ -1,0 +1,72 @@
+{
+  "gamesPlayed" : 1,
+  "gamesCompleted" : 0,
+  "totalMoves" : 0,
+  "totalTimePlayed" : 0,
+  "highestLevelReached" : 1,
+  "levels" : [ {
+    "levelIndex" : 1,
+    "disks" : 3,
+    "minMoves" : 7,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : true
+  }, {
+    "levelIndex" : 2,
+    "disks" : 4,
+    "minMoves" : 15,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 3,
+    "disks" : 5,
+    "minMoves" : 31,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 4,
+    "disks" : 6,
+    "minMoves" : 63,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 5,
+    "disks" : 7,
+    "minMoves" : 127,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 6,
+    "disks" : 8,
+    "minMoves" : 255,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 7,
+    "disks" : 9,
+    "minMoves" : 511,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  }, {
+    "levelIndex" : 8,
+    "disks" : 10,
+    "minMoves" : 1023,
+    "bestTime" : 0,
+    "bestMoves" : 0,
+    "stars" : 0,
+    "unlocked" : false
+  } ]
+}
