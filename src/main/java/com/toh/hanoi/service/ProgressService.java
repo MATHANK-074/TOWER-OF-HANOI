@@ -45,12 +45,13 @@ public class ProgressService {
     }
 
     private UserProgress getOrCreateProgress(String username) {
-        Optional<UserProgress> existing = userProgressRepository.findByUsername(username.toLowerCase());
+        String lowerUsername = username.toLowerCase();
+        Optional<UserProgress> existing = userProgressRepository.findByUsername(lowerUsername);
         if (existing.isPresent()) {
             return existing.get();
         }
 
-        UserProgress progress = new UserProgress(username.toLowerCase());
+        UserProgress progress = new UserProgress(lowerUsername);
         progress.setCurrentLevel(1);
         progress.setHighestLevelReached(1);
         progress.setGamesPlayed(0);
@@ -58,7 +59,19 @@ public class ProgressService {
         progress.setTotalMoves(0);
         progress.setTotalTimePlayed(0);
         progress.setLevelsJson(toJson(defaultLevels()));
-        return userProgressRepository.save(progress);
+        
+        try {
+            return userProgressRepository.save(progress);
+        } catch (Exception e) {
+            // Handle race condition: another thread created the record between check and save
+            // Retry the lookup
+            Optional<UserProgress> retryExisting = userProgressRepository.findByUsername(lowerUsername);
+            if (retryExisting.isPresent()) {
+                return retryExisting.get();
+            }
+            // If still not found, re-throw the original exception
+            throw e;
+        }
     }
 
     private GameStats toGameStats(UserProgress progress) {

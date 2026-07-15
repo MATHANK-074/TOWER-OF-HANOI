@@ -1,7 +1,6 @@
 package com.toh.hanoi.controller;
 
 import com.toh.hanoi.service.AuthService;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -42,11 +41,5 @@ public class AuthController {
 
         var user = authService.login(username, password);
         return Map.of("success", true, "message", "Login successful", "user", Map.of("username", user.getUsername(), "email", user.getEmail()));
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, Object> handleBadRequest(IllegalArgumentException ex) {
-        return Map.of("success", false, "message", ex.getMessage());
     }
 }

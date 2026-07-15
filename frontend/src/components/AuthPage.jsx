@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 
+const API_BASE_URL = typeof window !== 'undefined' && window.location.port === '5173'
+  ? 'http://localhost:8080/api'
+  : '/api';
+
 export default function AuthPage({ onAuthSuccess, onSwitchView }) {
   const [mode, setMode] = useState('login');
   const [form, setForm] = useState({ username: '', email: '', password: '' });
@@ -15,7 +19,7 @@ export default function AuthPage({ onAuthSuccess, onSwitchView }) {
     setIsError(false);
 
     try {
-      const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/signup';
+      const endpoint = mode === 'login' ? `${API_BASE_URL}/auth/login` : `${API_BASE_URL}/auth/signup`;
       const payload = mode === 'login'
         ? { username: form.username, password: form.password }
         : { username: form.username, email: form.email, password: form.password };
